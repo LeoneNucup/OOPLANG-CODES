@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 public class Stopwatch extends JFrame
 {
     JButton startButton = new JButton();
@@ -14,10 +15,42 @@ public class Stopwatch extends JFrame
     JTextField stopTextField = new JTextField();
     JTextField elapsedTextField = new JTextField();
     
+    long startTime;
+    long stopTime;
+    double elapsedTime;
+    
+    private void exitForm(WindowEvent e){
+            JFrame f;
+            f = new JFrame();
+            JOptionPane.showMessageDialog(f,"Exiting Module");
+        }
+        
+    private void startButtonActionPerformed(ActionEvent e){
+            JFrame f;
+            f = new JFrame();
+            JOptionPane.showMessageDialog(f,"Start Timer Initiated");
+            
+    }
+    
+    private void stopButtonActionPerformed(ActionEvent e){
+            JFrame f;
+            f = new JFrame();
+            JOptionPane.showMessageDialog(f,"Stop Timer Initiated");
+            
+    }
+    
+    private void exitButtonActionPerformed(ActionEvent e){
+            JFrame f;
+            f = new JFrame();
+            JOptionPane.showMessageDialog(f,"THANK YOU!! <3 <3");
+            System.exit(0);
+            
+    }
     
     public Stopwatch(){
-        setTitle("Stopwatch Application");
-        
+        setBounds(600,400,50,50);
+        setTitle("Stopwatch Application");   
+                
         //Grid Creation
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gridConstraints = new GridBagConstraints();
@@ -48,31 +81,65 @@ public class Stopwatch extends JFrame
         gridConstraints.gridy=1;
         getContentPane().add(stopLabel,gridConstraints);
         
-        elapsedLabel.setText("Elapsed Time (sec)");
+        elapsedLabel.setText("Elapsed Time (sec) ");
         gridConstraints.gridx=1;
         gridConstraints.gridy=2;
         getContentPane().add(elapsedLabel,gridConstraints);
         //TextField
         startTextField.setText("");
-        startTextField.setColumns(5);
+        startTextField.setColumns(15);
         gridConstraints.gridx=2;
         gridConstraints.gridy=0;
         getContentPane().add(startTextField,gridConstraints);
         
         stopTextField.setText("");
-        stopTextField.setColumns(5);
+        stopTextField.setColumns(15);
         gridConstraints.gridx=2;
         gridConstraints.gridy=1;
         getContentPane().add(stopTextField,gridConstraints);
         
         elapsedTextField.setText("");
-        elapsedTextField.setColumns(5);
+        elapsedTextField.setColumns(15);
         gridConstraints.gridx=2;
         gridConstraints.gridy=2;
         getContentPane().add(elapsedTextField,gridConstraints);
         
+        
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                exitForm(e);
+                }
+            }); 
+            
+            
+            
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                startButtonActionPerformed(e);
+            }
+        });
+        
+        
+        stopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                stopButtonActionPerformed(e);
+            }
+        });
+        
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                exitButtonActionPerformed(e);
+            }
+        });
+        
+        
         pack();
+        
+        
+
     }
+    
+    
     
     public static void main(String[] args){
         new Stopwatch().show();
