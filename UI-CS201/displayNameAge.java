@@ -12,22 +12,6 @@ public class displayNameAge extends JFrame {
     JLabel nameLabel = new JLabel();
     JLabel ageLabel = new JLabel();
 
-    private void okButtonPressed(ActionEvent e) {
-        JFrame f;
-        f = new JFrame();
-        JOptionPane.showMessageDialog(f,
-                "Name is : " + nameField.getText() + ", and your Age is : " + ageField.getText());
-        System.exit(0);
-    }
-
-    private void exitButtonPressed(ActionEvent e) {
-        JFrame f;
-        f = new JFrame();
-        JOptionPane.showMessageDialog(f, "Thank You for Using this Program!");
-        System.exit(0);
-
-    }
-
     public displayNameAge() {
         setBounds(600, 400, 50, 50);
         setTitle("Display Name and Age");
@@ -81,6 +65,22 @@ public class displayNameAge extends JFrame {
         });
 
         pack();
+    }
+
+    private void okButtonPressed(ActionEvent e) {
+        JFrame f;
+        f = new JFrame();
+        JOptionPane.showMessageDialog(f,
+                "Name is : " + nameField.getText() + ", and your Age is : " + ageField.getText());
+        System.exit(0);
+    }
+
+    private void exitButtonPressed(ActionEvent e) {
+        JFrame f;
+        f = new JFrame();
+        JOptionPane.showMessageDialog(f, "Thank You for Using this Program!");
+        System.exit(0);
+
     }
 
     public static void main(String[] args) {
